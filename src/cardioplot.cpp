@@ -3,8 +3,12 @@
 CardioPlot::CardioPlot(QWidget* parent) : QCustomPlot(parent)
 {
 
+    this->setInteraction(QCP::iRangeDrag, true);
+    this->axisRect()->setRangeDrag(Qt::Horizontal);
+    this->axisRect()->setRangeDragAxes(this->axisRect()->axis(QCPAxis::atBottom), this->axisRect()->axis(QCPAxis::atLeft));
+
     this->axisRect()->axis(QCPAxis::atBottom)->setLabel("Time [ms]");
-    this->axisRect()->axis(QCPAxis::atBottom)->setRange(0, 100000);
+    this->axisRect()->axis(QCPAxis::atBottom)->setRange(0, 5000);
 
     this->axisRect()->axis(QCPAxis::atLeft)->setLabel("Voltage [V]");
     this->axisRect()->axis(QCPAxis::atLeft)->setRange(-5, 5);
