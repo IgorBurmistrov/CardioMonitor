@@ -24,12 +24,12 @@ private slots:
     void startRecord();
     void pauseRecord();
     void stopRecord();
+    void save();
 
 private:
     Ui::MainWindow *ui;
     QIODevice* m_iodev;
     QTime* m_time;
-    QTimer* m_timer;
 };
 
 #endif // MAINWINDOW_H

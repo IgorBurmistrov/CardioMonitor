@@ -2,6 +2,7 @@
 #include <QtSerialPort/QSerialPort>
 #include <QPushButton>
 #include <QComboBox>
+#include <QFileDialog>
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
@@ -16,6 +17,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(this->ui->startButton, &QPushButton::clicked, this, &MainWindow::startRecord);
     connect(this->ui->pauseButton, &QPushButton::clicked, this, &MainWindow::pauseRecord);
     connect(this->ui->stopButton, &QPushButton::clicked, this, &MainWindow::stopRecord);
+    connect(this->ui->saveButton, &QPushButton::clicked, this, &MainWindow::save);
     connect(this->ui->serialportList, SIGNAL(currentIndexChanged(int)), this, SLOT(selectSerialPort()));
 
     this->m_time = new QTime();
@@ -93,4 +95,14 @@ void MainWindow::tryToRead() {
             }
         }
     }
+}
+
+void MainWindow::save() {
+
+    QString filename = QFileDialog::getSaveFileName(this, tr("Save File"), "", tr("CSV (*.csv)"));
+
+    this->ui->cardioPlot->saveAsCSV(filename + ".csv");
+
+    this->ui->statusBar->showMessage(tr("File saved"));
+
 }

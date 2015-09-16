@@ -10,6 +10,7 @@ public:
     ~CardioPlot();
     void add(double value, int time);
     void clear();
+    void saveAsCSV(const QString & filaneme);
 };
 
 #endif // CARDIOPLOT_H
