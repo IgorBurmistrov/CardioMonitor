@@ -19,6 +19,9 @@ public:
     void tryToRead();
 
 private slots:
+    void changeDisplayMode(int);
+    void setTimeRange(int);
+    void setValueRange();
     void updateSerialPorts();
     void selectSerialPort();
     void startRecord();
@@ -29,7 +32,9 @@ private slots:
 private:
     Ui::MainWindow *ui;
     QIODevice* m_iodev;
-    QTime* m_time;
+    int m_last_time;
+    int m_time_diff;
+    bool m_time_sync;
 };
 
 #endif // MAINWINDOW_H

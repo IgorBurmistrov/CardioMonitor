@@ -6,7 +6,7 @@
 
 QT       += core gui serialport printsupport
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport serialport
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport serialport bluetooth
 
 TARGET = CardioMonitor
 TEMPLATE = app
